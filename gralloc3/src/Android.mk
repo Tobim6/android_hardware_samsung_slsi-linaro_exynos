@@ -341,6 +341,7 @@ LOCAL_MODULE_OWNER := arm
 
 include $(BUILD_SHARED_LIBRARY)
 
+ifneq ($(TARGET_USES_PREBUILT_EXYNOS_BSP_LIBS),true)
 ######### GrallocMapperCamera ############
 
 include $(CLEAR_VARS)
@@ -603,3 +604,4 @@ LOCAL_SRC_FILES := \
 	mali_gralloc_debug.cpp
 
 include $(BUILD_SHARED_LIBRARY)
+endif

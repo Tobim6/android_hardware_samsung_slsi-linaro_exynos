@@ -21,9 +21,6 @@ common_exynos_dirs := \
 	libhdr \
 	libhdr-common-headers \
 	libhdr10p-meta-common-headers \
-	libexynosutils \
-	libcsc \
-	libv4l2 \
 	libswconverter \
 	libstagefrighthw \
 	exyrngd \
@@ -68,14 +65,15 @@ endif
 
 common_exynos_dirs += opencl_symlink
 
+ifneq ($(TARGET_USES_PREBUILT_EXYNOS_BSP_LIBS),true)
+common_exynos_dirs += libexynosutils libcsc libv4l2
+endif
+
 include $(call all-named-subdir-makefiles,$(common_exynos_dirs))
 else
 PREFIX := $(shell echo $(TARGET_BOARD_PLATFORM) | head -c 6)
 ifneq ($(filter exynos, $(PREFIX)),)
 common_exynos_dirs := \
-	libexynosutils \
-	libcsc \
-	libv4l2 \
 	libswconverter \
 	libstagefrighthw \
 	exyrngd \
@@ -120,6 +118,10 @@ endif
 endif
 
 common_exynos_dirs += opencl_symlink
+
+ifneq ($(TARGET_USES_PREBUILT_EXYNOS_BSP_LIBS),true)
+common_exynos_dirs += libexynosutils libcsc libv4l2
+endif
 
 include $(call all-named-subdir-makefiles,$(common_exynos_dirs))
 endif
