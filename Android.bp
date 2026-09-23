@@ -1,5 +1,8 @@
 soong_namespace {
-    imports: ["hardware/samsung_slsi-linaro/interfaces"],
+    imports: [
+        "hardware/samsung_slsi-linaro/interfaces",
+        "hardware/samsung_slsi-linaro/exynos/gralloc3",
+    ],
 }
 
 soong_config_module_type {
